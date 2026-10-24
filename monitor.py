@@ -26,7 +26,7 @@ if os.path.exists(archivo_hash):
 
 if hash_actual != hash_anterior:
     
-print("Cambio detectado, enviando mensaje...")
+    print("Cambio detectado, enviando mensaje...")
 
     requests.post(
         print("Mensaje enviado")
