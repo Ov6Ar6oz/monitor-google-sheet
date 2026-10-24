@@ -25,12 +25,10 @@ if os.path.exists(archivo_hash):
         hash_anterior = f.read().strip()
 
 if hash_actual != hash_anterior:
-    
+
     print("Cambio detectado, enviando mensaje...")
 
     requests.post(
-        print("Mensaje enviado")
-
         f"https://api.telegram.org/bot{TOKEN}/sendMessage",
         data={
             "chat_id": CHAT_ID,
@@ -38,6 +36,8 @@ if hash_actual != hash_anterior:
         },
         timeout=30
     )
+
+    print("Mensaje enviado")
 
     with open(archivo_hash, "w") as f:
         f.write(hash_actual)
