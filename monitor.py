@@ -10,6 +10,8 @@ CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 r = requests.get(SHEET_URL, timeout=30)
 contenido = r.text
 
+print("CSV descargado correctamente")
+
 hash_actual = hashlib.sha256(
     contenido.encode("utf-8")
 ).hexdigest()
@@ -23,8 +25,12 @@ if os.path.exists(archivo_hash):
         hash_anterior = f.read().strip()
 
 if hash_actual != hash_anterior:
+    
+print("Cambio detectado, enviando mensaje...")
 
     requests.post(
+        print("Mensaje enviado")
+
         f"https://api.telegram.org/bot{TOKEN}/sendMessage",
         data={
             "chat_id": CHAT_ID,
