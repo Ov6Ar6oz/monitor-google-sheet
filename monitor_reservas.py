@@ -57,13 +57,13 @@ for i in range(max_lineas):
     actual = lineas_actuales[i]
 
     if "BICICLETA" in actual.upper():
-        actividad_actual = "🚲 Bicicleta"
+        actividad_detectada = "🚲 Bicicleta"
 
     if "KAYAKS" in actual.upper():
-        actividad_actual = "🚣 Kayaks"
+        actividad_detectada = "🚣 Kayaks"
 
     if "ARCO Y FLECHA" in actual.upper():
-        actividad_actual = "🏹 Arco y Flecha"
+        actividad_detectada = "🏹 Arco y Flecha"
 
     partes = [x.strip() for x in actual.split(",")]
 
@@ -79,9 +79,64 @@ for i in range(max_lineas):
         continue
 
     partes_ant = [x.strip() for x in anterior.split(",")]
-    partes_act = [x.strip() for x in actual.split(",")]
-    
-    actividad_detectada = ""
+partes_act = [x.strip() for x in actual.split(",")]
+
+if len(partes_act) < 3:
+    continue
+
+actividad_detectada = ""
+puesto = ""
+habitacion_ant = ""
+habitacion_act = ""
+nombre = ""
+
+# BICICLETA
+if len(partes_act) > 1 and partes_act[1]:
+
+    actividad_detectada = "🚲 Bicicleta"
+
+    puesto = partes_act[0]
+
+    habitacion_act = partes_act[1]
+
+    if len(partes_ant) > 1:
+        habitacion_ant = partes_ant[1]
+
+    if len(partes_act) > 2:
+        nombre = partes_act[2]
+
+# ARCO Y FLECHA
+elif len(partes_act) > 5 and partes_act[5]:
+
+    actividad_detectada = "🏹 Arco y Flecha"
+
+    puesto = partes_act[4]
+
+    habitacion_act = partes_act[5]
+
+    if len(partes_ant) > 5:
+        habitacion_ant = partes_ant[5]
+
+    if len(partes_act) > 6:
+        nombre = partes_act[6]
+
+# KAYAKS
+elif len(partes_act) > 9 and partes_act[9]:
+
+    actividad_detectada = "🚣 Kayaks"
+
+    puesto = partes_act[8]
+
+    habitacion_act = partes_act[9]
+
+    if len(partes_ant) > 9:
+        habitacion_ant = partes_ant[9]
+
+    if len(partes_act) > 10:
+        nombre = partes_act[10]
+
+else:
+    continue
     
     if len(partes_act) > 1 and partes_act[1]:
     actividad_detectada = "🚲 Bicicleta"
