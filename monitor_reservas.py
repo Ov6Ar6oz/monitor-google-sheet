@@ -81,88 +81,70 @@ for i in range(max_lineas):
     partes_ant = [x.strip() for x in anterior.split(",")]
     partes_act = [x.strip() for x in actual.split(",")]
 
-if len(partes_act) < 3:
-    continue
-
-actividad_detectada = ""
-puesto = ""
-habitacion_ant = ""
-habitacion_act = ""
-nombre = ""
-
-# BICICLETA
-if len(partes_act) > 1 and partes_act[1]:
-
-    actividad_detectada = "🚲 Bicicleta"
-
-    puesto = partes_act[0]
-
-    habitacion_act = partes_act[1]
-
-    if len(partes_ant) > 1:
-        habitacion_ant = partes_ant[1]
-
-    if len(partes_act) > 2:
-        nombre = partes_act[2]
-
-# ARCO Y FLECHA
-elif len(partes_act) > 5 and partes_act[5]:
-
-    actividad_detectada = "🏹 Arco y Flecha"
-
-    puesto = partes_act[4]
-
-    habitacion_act = partes_act[5]
-
-    if len(partes_ant) > 5:
-        habitacion_ant = partes_ant[5]
-
-    if len(partes_act) > 6:
-        nombre = partes_act[6]
-
-# KAYAKS
-elif len(partes_act) > 9 and partes_act[9]:
-
-    actividad_detectada = "🚣 Kayaks"
-
-    puesto = partes_act[8]
-
-    habitacion_act = partes_act[9]
-
-    if len(partes_ant) > 9:
-        habitacion_ant = partes_ant[9]
-
-    if len(partes_act) > 10:
-        nombre = partes_act[10]
-
-else:
-    continue
-    
     if len(partes_act) < 3:
         continue
 
-    puesto = partes_act[0].strip()
-
+    actividad_detectada = ""
+    puesto = ""
     habitacion_ant = ""
     habitacion_act = ""
-
-    if len(partes_ant) > 1:
-        habitacion_ant = partes_ant[1].strip()
-
-    if len(partes_act) > 1:
-        habitacion_act = partes_act[1].strip()
-
     nombre = ""
-    if len(partes_act) > 2:
-        nombre = partes_act[2].strip()
 
+    # BICICLETA
+    if len(partes_act) > 1 and partes_act[1]:
+
+        actividad_detectada = "🚲 Bicicleta"
+
+        puesto = partes_act[0]
+
+        habitacion_act = partes_act[1]
+
+        if len(partes_ant) > 1:
+            habitacion_ant = partes_ant[1]
+
+        if len(partes_act) > 2:
+            nombre = partes_act[2]
+
+    # ARCO Y FLECHA
+    elif len(partes_act) > 5 and partes_act[5]:
+
+        actividad_detectada = "🏹 Arco y Flecha"
+
+        puesto = partes_act[4]
+
+        habitacion_act = partes_act[5]
+
+        if len(partes_ant) > 5:
+            habitacion_ant = partes_ant[5]
+
+        if len(partes_act) > 6:
+            nombre = partes_act[6]
+
+    # KAYAKS
+    elif len(partes_act) > 9 and partes_act[9]:
+
+        actividad_detectada = "🚣 Kayaks"
+
+        puesto = partes_act[8]
+
+        habitacion_act = partes_act[9]
+
+        if len(partes_ant) > 9:
+            habitacion_ant = partes_ant[9]
+
+        if len(partes_act) > 10:
+            nombre = partes_act[10]
+
+    else:
+        continue
+        
     # Nueva reserva
     if habitacion_ant == "" and habitacion_act != "":
 
         mensaje = (
             "🏨 Nueva reserva\n\n"
             f"📅 {nombre_dia}\n"
-            f"{actividad_actual}\n"
+            f"{actividad_detectada}\n"
             f"🕒 {horario_actual}\n"
             f"🎫 Puesto {puesto}\n"
             f"🏠 Habitación {habitacion_act}"
@@ -179,7 +161,7 @@ else:
         mensaje = (
             "❌ Reserva cancelada\n\n"
             f"📅 {nombre_dia}\n"
-            f"{actividad_actual}\n"
+            f"{actividad_detectada}\n"
             f"🕒 {horario_actual}\n"
             f"🎫 Puesto {puesto}\n"
             f"🏠 Habitación {habitacion_ant}"
