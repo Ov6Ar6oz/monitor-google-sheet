@@ -47,7 +47,7 @@ lineas_actuales = csv_actual.splitlines()
 
 max_lineas = min(len(lineas_anteriores), len(lineas_actuales))
 
-actividad_actual = ""
+actividad_detectada = ""
 horario_actual = ""
 
 avisos = []
@@ -80,7 +80,18 @@ for i in range(max_lineas):
 
     partes_ant = [x.strip() for x in anterior.split(",")]
     partes_act = [x.strip() for x in actual.split(",")]
+    
+    actividad_detectada = ""
+    
+    if len(partes_act) > 1 and partes_act[1]:
+    actividad_detectada = "🚲 Bicicleta"
 
+    elif len(partes_act) > 5 and partes_act[5]:
+    actividad_detectada = "🏹 Arco y Flecha"
+
+    elif len(partes_act) > 9 and partes_act[9]:
+    actividad_detectada = "🚣 Kayaks"
+    
     if len(partes_act) < 3:
         continue
 
