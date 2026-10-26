@@ -14,13 +14,8 @@ GIDS = {
     6: ("Domingo", "794348104")
 }
 
-hoy = datetime.now()
-dia_semana = hoy.weekday()
-
 nombre_dia = "Sabado"
 gid = "1595785792"
-
-nombre_dia, gid = GIDS[dia_semana]
 
 CSV_URL = (
     f"https://docs.google.com/spreadsheets/d/"
