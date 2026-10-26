@@ -17,9 +17,8 @@ GIDS = {
 hoy = datetime.now()
 dia_semana = hoy.weekday()
 
-if dia_semana not in GIDS:
-    print("Hoy no es viernes, sábado ni domingo.")
-    exit(0)
+nombre_dia = "Sabado"
+gid = "1595785792"
 
 nombre_dia, gid = GIDS[dia_semana]
 
