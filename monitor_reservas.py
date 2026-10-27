@@ -156,13 +156,6 @@ for i in range(max_lineas):
         avisos.append(mensaje)
 
     # Cancelación
-    print(
-    "DEBUG",
-    actividad_detectada,
-    puesto,
-    habitacion_ant,
-    habitacion_act
-    )
     elif habitacion_ant != "" and habitacion_act == "":
 
         mensaje = (
