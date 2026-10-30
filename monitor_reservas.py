@@ -14,8 +14,8 @@ GIDS = {
     6: ("Domingo", "794348104")
 }
 
-nombre_dia = "Sabado"
-gid = "1595785792"
+nombre_dia = "Viernes"
+gid = "750539006"
 
 CSV_URL = (
     f"https://docs.google.com/spreadsheets/d/"
